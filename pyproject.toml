@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "run_vad"
+version = "0.1.0"
+description = "Run Voice Activity Detection on an audio file"
+authors = [
+    { name = "Shinya Fujie", email = "shinya.fujie@p.chibakoudai.jp" }
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+dependencies = [
+    "soundfile",
+    "numpy",
+    "torch",
+    "torchaudio",
+    "webrtcvad",
+]
+
+[project.scripts]
+run_vad = "run_vad.main:main"
