@@ -5,6 +5,7 @@ Running Voice Activity Detection on an audio file.
 
 - Python 3.6 or later
 - numpy
+- soundfile
 - torch
 - torchaudio
 - webrtcvad
@@ -36,7 +37,7 @@ It's simply like:
 [
     # the start and end time of the first channel.
     [
-        [0.0, 0.3], [1.2, 1.5], ...  
+        [0.0, 0.3], [1.2, 1.5], ...
     ],
     # the start and end time of the second channel.
     [
@@ -44,6 +45,7 @@ It's simply like:
     ]
 ]
 ```
+
 The values are in seconds.
 
 ### Options
