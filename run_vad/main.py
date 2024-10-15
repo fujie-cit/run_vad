@@ -12,7 +12,11 @@ def load_audio(path):
     return audio
 
 
-def run_vad(audio, vad_unit_name="silero"):
+def run_vad(audio,
+            start_frame_num_thresh=5,
+            start_frame_rollback=10,
+            end_frame_num_thresh=30,
+            vad_unit_name="silero"):
     vad = VAD(vad_unit_name=vad_unit_name)
     vad.reset()
 
@@ -60,12 +64,20 @@ def main():
 
     parser.add_argument("--input", "-i", help="Path to the input audio file", required=True)
     parser.add_argument("--vad_unit", "-u", help="VAD unit to use [webrtcvad, slero] (default: silero)", default="silero")
+    parser.add_argument("--start_frame_num_thresh", "-s", help="Start frame number threshold (default: 3)", type=int, default=5)
+    parser.add_argument("--start_frame_rollback", "-r", help="Start frame rollback (default: 10)", type=int, default=10)
+    parser.add_argument("--end_frame_num_thresh", "-e", help="End frame number threshold (default: 30)", type=int, default=30)
+    parser.add_argument("--vad_unit_options", help="VAD unit options", type=str, default=None)
     parser.add_argument("output", help="Path to the output JSON file")
 
     args = parser.parse_args()
 
     audio = load_audio(args.input)
-    results = run_vad(audio, vad_unit_name=args.vad_unit)
+    results = run_vad(audio,
+                      start_frame_num_thresh=args.start_frame_num_thresh,
+                      start_frame_rollback=args.start_frame_rollback,
+                      end_frame_num_thresh=args.end_frame_num_thresh,
+                      vad_unit_name=args.vad_unit)
     json.dump(results, open(args.output, "w"))
 
 if __name__ == "__main__":

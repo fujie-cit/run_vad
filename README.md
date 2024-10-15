@@ -34,17 +34,16 @@ The results will be saved in a JSON file.
 It's simply like:
 ```json
 [
-    # the start and end time of the first channel.
-    [
-        [0.0, 0.3], [1.2, 1.5], ...  
-    ],
-    # the start and end time of the second channel.
-    [
-        [0.4, 0.5], [1.6, 1.8], ...
-    ]
+    [[0.0, 0.3], [1.2, 1.5], ...],
+    [[0.4, 0.5], [1.6, 1.8], ...],
 ]
 ```
-The values are in seconds.
+
+The JSON file contains a list of lists.
+Each list corresponds to a channel in the audio file.
+Each element in the list is a list of two numbers, which are the start and end times of the detected speech segment in seconds.
+
+The format of this JSON file is compatible with the [VAP](https://github.com/ErikEkstedt/VAP/tree/main/vap/data) data.
 
 ### Options
 
