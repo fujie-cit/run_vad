@@ -17,6 +17,20 @@ def run_vad(audio,
             start_frame_rollback=10,
             end_frame_num_thresh=30,
             vad_unit_name="silero"):
+    """
+    Run VAD on the given audio.
+
+    Args:
+        audio: numpy array with shape (samples, channels)
+        start_frame_num_thresh: Start frame number threshold (default: 5)
+        start_frame_rollback: Start frame rollback (default: 10)
+        end_frame_num_thresh: End frame number threshold (default: 30)
+        vad_unit_name: VAD unit to use [webrtcvad, slero] (default: silero)
+
+    Returns:
+        List of lists of tuples. Each inner list contains the speech segments for a channel.
+        Each tuple contains the start and end time of a speech segment.
+    """
     vad = VAD(vad_unit_name=vad_unit_name)
     vad.reset()
 
