@@ -84,4 +84,6 @@ results = run_vad(audio, sr)
   - End frame number threshold (default: 30)
 - vad_unit_name
   - The name of VAD algorithm to use, webrtcvad or slero (default: silero)
+- rollback_end_frame
+  - Whether if rollback end frame (default: True)
 
